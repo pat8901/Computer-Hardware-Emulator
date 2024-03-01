@@ -2,33 +2,58 @@
 #include <unistd.h>
 #include <../header/clock.h>
 
-#define true 1
-#define false 0
+#define high 1
+#define low 0
 
-int main(void)
+struct Clock c;
+
+int startClock(void)
 {
-    struct Clock clock;
-    clock.power = true;
-    clock.timing = 1000000;
-    clock.status = true;
+    // printf("clock power:%d\n", c.power);
 
-    printf("%d\n", clock.status);
-    usleep(clock.timing);
-
-    while (clock.power == true)
+    if (c.power == high)
     {
-        if (clock.status == true)
+        if (c.status == high)
         {
-            clock.status = false;
+            c.status = low;
         }
         else
         {
-            clock.status = true;
+            c.status = high;
         }
-
-        printf("%d\n", clock.status);
-        usleep(1000000); // Sleeps for a second
+        printf("clock status %d || ", c.status);
+        usleep(c.timing);
     }
 
     return 0;
 }
+
+// possibly use this if the implementation was multi-threaded
+// multi-threaded application brings it's own problems however
+// int startClockMulti(void)
+// {
+//     struct Clock clock;
+//     clock.power = high;
+//     clock.timing = 1000000;
+//     clock.status = high;
+
+//     printf("%d\n", clock.status);
+//     usleep(clock.timing);
+
+//     while (clock.power == high)
+//     {
+//         if (clock.status == high)
+//         {
+//             clock.status = low;
+//         }
+//         else
+//         {
+//             clock.status = high;
+//         }
+
+//         printf("%d\n", clock.status);
+//         usleep(1000000); // Sleeps for a second
+//     }
+
+//     return 0;
+// }

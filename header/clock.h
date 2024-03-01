@@ -4,3 +4,5 @@ struct Clock
     int timing;
     int power;
 };
+
+int startClock();
