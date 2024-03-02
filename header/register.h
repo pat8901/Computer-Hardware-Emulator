@@ -9,6 +9,7 @@ struct Register
     // Asynchronous Master Reset Input (Active LOW)
     unsigned int mr;
 
+    // Would it better to implement the inputs and outputs using an array?
     // Data inputs
     unsigned int D0 : 1;
     unsigned int D1 : 1;
@@ -31,3 +32,9 @@ struct Register
     unsigned int Q6 : 1;
     unsigned int Q7 : 1;
 };
+
+// Declaring function prototypes
+void setRegisterOutputs();
+void setRegisterInputsRandom();
+void printRegisterInputs();
+void printRegisterOuputs();

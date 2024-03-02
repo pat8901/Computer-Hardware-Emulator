@@ -30,30 +30,30 @@ int startClock(void)
 
 // possibly use this if the implementation was multi-threaded
 // multi-threaded application brings it's own problems however
-// int startClockMulti(void)
-// {
-//     struct Clock clock;
-//     clock.power = high;
-//     clock.timing = 1000000;
-//     clock.status = high;
+int startClockMulti(void)
+{
+    struct Clock clock;
+    clock.power = high;
+    clock.timing = 1000000;
+    clock.status = high;
 
-//     printf("%d\n", clock.status);
-//     usleep(clock.timing);
+    printf("%d\n", clock.status);
+    usleep(clock.timing);
 
-//     while (clock.power == high)
-//     {
-//         if (clock.status == high)
-//         {
-//             clock.status = low;
-//         }
-//         else
-//         {
-//             clock.status = high;
-//         }
+    while (clock.power == high)
+    {
+        if (clock.status == high)
+        {
+            clock.status = low;
+        }
+        else
+        {
+            clock.status = high;
+        }
 
-//         printf("%d\n", clock.status);
-//         usleep(1000000); // Sleeps for a second
-//     }
+        printf("%d\n", clock.status);
+        usleep(1000000); // Sleeps for a second
+    }
 
-//     return 0;
-// }
+    return 0;
+}

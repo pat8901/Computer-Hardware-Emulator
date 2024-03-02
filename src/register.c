@@ -10,8 +10,6 @@
 #define low 0
 
 struct Register reg;
-extern struct Clock c; // initial declaration in clock.c
-int startClock();
 
 void setRegisterInputsRandom()
 {
@@ -49,29 +47,4 @@ void printRegisterInputs()
 void printRegisterOuputs()
 {
     printf("Register Output: %d %d %d %d %d %d %d %d\n", reg.Q0, reg.Q1, reg.Q2, reg.Q3, reg.Q4, reg.Q5, reg.Q6, reg.Q7);
-}
-
-int main(void)
-{
-    c.power = high;
-    c.timing = 1000000;
-    c.status = low;
-    // Look into platform specific C librarys to implement this
-    // for changeing the value on key press
-    reg.mr = low;
-
-    while (c.power == high)
-    {
-        startClock();
-        reg.cp = c.status;
-        if (reg.cp == high)
-        {
-            setRegisterOutputs();
-            setRegisterInputsRandom();
-        }
-        printRegisterInputs();
-        printRegisterOuputs();
-    }
-
-    return 0;
 }

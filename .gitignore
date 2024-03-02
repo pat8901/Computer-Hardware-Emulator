@@ -1,2 +1,5 @@
 clock
 .vscode
+src/clock
+src/register
+src/main
