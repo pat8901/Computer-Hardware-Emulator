@@ -1,5 +1,7 @@
 // Stores 16 bytes of data. 16 locations, each location is a byte
 
+#define byte char
+
 struct Ram
 {
     // TODO: Can and should I make this smaller?
@@ -11,3 +13,5 @@ struct Ram
 };
 
 void printMem();
+int loadProgramRandom();
+byte getMemValue(int idx);
