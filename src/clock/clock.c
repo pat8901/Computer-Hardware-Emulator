@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
-#include <../header/clock.h>
+#include <../header/clock/clock.h>
 
 #define high 1
 #define low 0

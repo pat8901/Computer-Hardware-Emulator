@@ -2,11 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <../header/register.h>
-#include "../header/clock.h"
+#include <../header/registers/register.h>
+#include "../header/clock/clock.h"
 #include <../header/ram/ram.h>
-#include <../header/instruction_register.h>
-#include <../header/instruction_pointer.h>
+#include <../header/registers/instruction_register.h>
+#include <../header/registers/instruction_pointer.h>
 
 #define high 1
 #define low 0

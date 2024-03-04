@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <../header/register.h>
-#include "../header/clock.h"
+#include <../header/registers/register.h>
+#include "../header/clock/clock.h"
 
 #define high 1
 #define low 0

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <../header/instruction_register.h>
+#include <../header/registers/instruction_register.h>
 
 #define high 1
 #define low 0
