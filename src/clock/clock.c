@@ -7,41 +7,39 @@
 
 // struct Clock c;
 
-// int startClock(void)
-// {
-
-//     if (c.power == high)
-//     {
-//         if (c.status == high)
-//         {
-//             c.status = low;
-//         }
-//         else
-//         {
-//             c.status = high;
-//         }
-//         printf("clock status %d || ", c.status);
-//         usleep(c.timing);
-//     }
-
-//     return 0;
-// }
-
-// testing
-void powerOn(struct Clock *p)
+int startClock(struct Clock *ptr_clk)
 {
-    p->power = high;
-    p->timing = 1000000;
-    p->status = low;
-    return;
+
+    if (ptr_clk->power == high)
+    {
+        if (ptr_clk->status == high)
+        {
+            ptr_clk->status = low;
+        }
+        else
+        {
+            ptr_clk->status = high;
+        }
+        printf("clock status %d || ", ptr_clk->status);
+        usleep(ptr_clk->timing);
+    }
+
+    return 0;
+}
+
+void initClock(struct Clock *ptr_clk, int power, int timing, int status)
+{
+    ptr_clk->power = power;
+    ptr_clk->timing = timing;
+    ptr_clk->status = status;
 }
 
 // testing
-void printClockStatus(struct Clock *p)
+void printClockStatus(struct Clock *ptr_clk)
 {
-    printf("power: %d\n", p->power);
-    printf("timing: %d\n", p->timing);
-    printf("status: %d\n", p->status);
+    printf("power: %d\n", ptr_clk->power);
+    printf("timing: %d\n", ptr_clk->timing);
+    printf("status: %d\n", ptr_clk->status);
 }
 
 // possibly use this if the implementation was multi-threaded

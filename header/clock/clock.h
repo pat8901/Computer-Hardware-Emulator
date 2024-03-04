@@ -8,8 +8,8 @@ struct Clock
     int power;
 };
 
-int startClock();
-void powerOn(struct Clock *p);
+int startClock(struct Clock *ptr_clk);
+void initClock(struct Clock *ptr_clk, int power, int timing, int status);
 void printClockStatus(struct Clock *p);
 
 #endif

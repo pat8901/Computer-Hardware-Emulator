@@ -37,9 +37,9 @@ struct Register
 };
 
 // Declaring function prototypes
-void setRegisterOutputs();
-void setRegisterInputsRandom();
-void printRegisterInputs();
-void printRegisterOuputs();
+void setRegisterInputsRandom(struct Register *ptr_reg);
+void setRegisterOutputs(struct Register *ptr_reg);
+void printRegisterInputs(struct Register *ptr_reg);
+void printRegisterOutputs(struct Register *ptr_reg);
 
 #endif

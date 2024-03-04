@@ -1,5 +1,4 @@
 // 8-bit general purpose register
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -9,42 +8,40 @@
 #define high 1
 #define low 0
 
-struct Register reg;
-
-void setRegisterInputsRandom()
+void setRegisterInputsRandom(struct Register *ptr_reg)
 {
     srand(time(NULL));
 
-    reg.D0 = rand() % 2;
-    reg.D1 = rand() % 2;
-    reg.D2 = rand() % 2;
-    reg.D3 = rand() % 2;
-    reg.D4 = rand() % 2;
-    reg.D5 = rand() % 2;
-    reg.D6 = rand() % 2;
-    reg.D7 = rand() % 2;
+    ptr_reg->D0 = rand() % 2;
+    ptr_reg->D1 = rand() % 2;
+    ptr_reg->D2 = rand() % 2;
+    ptr_reg->D3 = rand() % 2;
+    ptr_reg->D4 = rand() % 2;
+    ptr_reg->D5 = rand() % 2;
+    ptr_reg->D6 = rand() % 2;
+    ptr_reg->D7 = rand() % 2;
 }
 
 /*Information meeting the setup and hold time requirements of the D inputs is
 transferred to the Q outputs on the LOW-to-HIGH transition of the clock input.*/
-void setRegisterOutputs()
+void setRegisterOutputs(struct Register *ptr_reg)
 {
-    reg.Q0 = reg.D0;
-    reg.Q1 = reg.D1;
-    reg.Q2 = reg.D2;
-    reg.Q3 = reg.D3;
-    reg.Q4 = reg.D4;
-    reg.Q5 = reg.D5;
-    reg.Q6 = reg.D6;
-    reg.Q7 = reg.D7;
+    ptr_reg->Q0 = ptr_reg->D0;
+    ptr_reg->Q1 = ptr_reg->D1;
+    ptr_reg->Q2 = ptr_reg->D2;
+    ptr_reg->Q3 = ptr_reg->D3;
+    ptr_reg->Q4 = ptr_reg->D4;
+    ptr_reg->Q5 = ptr_reg->D5;
+    ptr_reg->Q6 = ptr_reg->D6;
+    ptr_reg->Q7 = ptr_reg->D7;
 }
 
-void printRegisterInputs()
+void printRegisterInputs(struct Register *ptr_reg)
 {
-    printf("Register Input: %d %d %d %d %d %d %d %d || ", reg.D0, reg.D1, reg.D2, reg.D3, reg.D4, reg.D5, reg.D6, reg.D7);
+    printf("Register Input: %d %d %d %d %d %d %d %d || ", ptr_reg->D0, ptr_reg->D1, ptr_reg->D2, ptr_reg->D3, ptr_reg->D4, ptr_reg->D5, ptr_reg->D6, ptr_reg->D7);
 }
 
-void printRegisterOuputs()
+void printRegisterOutputs(struct Register *ptr_reg)
 {
-    printf("Register Output: %d %d %d %d %d %d %d %d\n", reg.Q0, reg.Q1, reg.Q2, reg.Q3, reg.Q4, reg.Q5, reg.Q6, reg.Q7);
+    printf("Register Output: %d %d %d %d %d %d %d %d\n", ptr_reg->Q0, ptr_reg->Q1, ptr_reg->Q2, ptr_reg->Q3, ptr_reg->Q4, ptr_reg->Q5, ptr_reg->Q6, ptr_reg->Q7);
 }

@@ -11,8 +11,8 @@
 #define high 1
 #define low 0
 
-// extern struct Clock c; // initial declaration in clock.c
-extern struct Register reg;
+struct Clock clk;
+struct Register reg;
 extern struct Ram ram;
 extern struct InstructionRegister ir;
 extern struct InstructionPointer ip;
@@ -20,41 +20,36 @@ extern struct InstructionPointer ip;
 int main(void)
 {
     // loading program
+    struct Register *ptr_reg = &reg;
     loadProgramRandom();
     setStartInstruction();
     setStartNextInstruction();
     printMem();
 
     // Starting clock
-    struct Clock c;
-    struct Clock *ptr = &c;
-    struct Clock y = *ptr;
-    powerOn(ptr);
-    printClockStatus(ptr);
-
-    // c.power = high;
-    // c.timing = 1000000;
-    // c.status = low;
-    // reg.mr = low;
+    struct Clock *ptr_clk = &clk;
+    initClock(ptr_clk, high, 1000000, low);
+    printClockStatus(ptr_clk);
+    reg.mr = low;
 
     // Running CPU
-    //     while (ir.current_instr < 16 || ip.next_instr < 16)
-    // {
-    //     // startClock();
-    //     reg.cp = c.status;
+    while (ir.current_instr < 16 || ip.next_instr < 16)
+    {
+        startClock(ptr_clk);
+        ptr_reg->cp = ptr_clk->status;
 
-    //     // When clock signal is 1 (rising edge triggered)
-    //     if (reg.cp == high)
-    //     {
-    //         setRegisterOutputs();
-    //         setRegisterInputsRandom();
-    //         getMemValue(ir.current_instr);
-    //         ir.current_instr = ip.next_instr;
-    //         ip.next_instr++;
-    //     }
-    //     printRegisterInputs();
-    //     printRegisterOuputs();
-    // }
+        // When clock signal is 1 (rising edge triggered)
+        if (ptr_reg->cp == high)
+        {
+            setRegisterOutputs(ptr_reg);
+            setRegisterInputsRandom(ptr_reg);
+            getMemValue(ir.current_instr);
+            ir.current_instr = ip.next_instr;
+            ip.next_instr++;
+        }
+        printRegisterInputs(ptr_reg);
+        printRegisterOutputs(ptr_reg);
+    }
 
     return 0;
 }
