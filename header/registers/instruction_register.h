@@ -1,4 +1,7 @@
 // 8-bit instruction register.4-bit mem address (higher), 4-bit instruction (lower)
+#ifndef INSTRUCTION_REGISTER_H
+#define INSTRUCTION_REGISTER_H
+
 struct InstructionRegister
 {
     // unsigned int memory_address;
@@ -7,3 +10,5 @@ struct InstructionRegister
 };
 
 void setStartInstruction();
+
+#endif

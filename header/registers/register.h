@@ -1,6 +1,9 @@
 // Based on DM74LS273 8-Bit Register with Clear
 // link: https://ece-classes.usc.edu/ee459/library/datasheets/DM74LS273.pdf
 
+#ifndef REGISTER_H
+#define REGISTER_H
+
 struct Register
 {
     // Clock pulse input
@@ -38,3 +41,5 @@ void setRegisterOutputs();
 void setRegisterInputsRandom();
 void printRegisterInputs();
 void printRegisterOuputs();
+
+#endif

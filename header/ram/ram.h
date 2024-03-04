@@ -1,5 +1,6 @@
 // Stores 16 bytes of data. 16 locations, each location is a byte
-
+#ifndef RAM_H
+#define RAM_H
 #define byte char
 
 struct Ram
@@ -15,3 +16,5 @@ struct Ram
 void printMem();
 int loadProgramRandom();
 byte getMemValue(int idx);
+
+#endif

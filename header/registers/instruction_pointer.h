@@ -1,6 +1,9 @@
 // 4-bit register (DM74LS161A)
 // for demonstration I will increment count every cycle, however outside of demo increment
 // after completion of a instruction (could take several clock cycles)
+#ifndef INSTRUCTION_POINTER_H
+#define INSTRUCTION_POINTER_H
+
 struct InstructionPointer
 {
     int CO; // (counter out) pull high to place instruction onto the bus
@@ -12,3 +15,5 @@ struct InstructionPointer
 };
 
 void setStartNextInstruction();
+
+#endif
