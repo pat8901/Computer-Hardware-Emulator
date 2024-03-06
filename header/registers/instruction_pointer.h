@@ -14,6 +14,6 @@ struct InstructionPointer
     unsigned int next_instr;
 };
 
-void setStartNextInstruction();
+void setStartNextInstruction(struct InstructionPointer *ip_ptr);
 
 #endif

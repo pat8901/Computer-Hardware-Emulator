@@ -13,21 +13,26 @@
 
 struct Clock clk;
 struct Register reg;
-extern struct Ram ram;
-extern struct InstructionRegister ir;
-extern struct InstructionPointer ip;
+struct Ram ram;
+struct InstructionRegister ir;
+struct InstructionPointer ip;
 
 int main(void)
 {
-    // loading program
+    // Initializing hardware
+    struct Clock *ptr_clk = &clk;
+    struct Ram *ram_ptr = &ram;
     struct Register *ptr_reg = &reg;
-    loadProgramRandom();
-    setStartInstruction();
-    setStartNextInstruction();
-    printMem();
+    struct InstructionPointer *ip_ptr = &ip;
+    struct InstructionRegister *ir_ptr = &ir;
+
+    // loading program
+    loadProgramRandom(ram_ptr);
+    setStartInstruction(ir_ptr);
+    setStartNextInstruction(ip_ptr);
+    printMem(ram_ptr);
 
     // Starting clock
-    struct Clock *ptr_clk = &clk;
     initClock(ptr_clk, high, 1000000, low);
     printClockStatus(ptr_clk);
     reg.mr = low;
@@ -43,7 +48,7 @@ int main(void)
         {
             setRegisterOutputs(ptr_reg);
             setRegisterInputsRandom(ptr_reg);
-            getMemValue(ir.current_instr);
+            getMemValue(ram_ptr, ir.current_instr);
             ir.current_instr = ip.next_instr;
             ip.next_instr++;
         }

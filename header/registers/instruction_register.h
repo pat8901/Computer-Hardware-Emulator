@@ -9,6 +9,6 @@ struct InstructionRegister
     unsigned int current_instr;
 };
 
-void setStartInstruction();
+void setStartInstruction(struct InstructionRegister *ir_ptr);
 
 #endif

@@ -13,8 +13,8 @@ struct Ram
     unsigned char memory[16];
 };
 
-void printMem();
-int loadProgramRandom();
-byte getMemValue(int idx);
+void printMem(struct Ram *ram_ptr);
+int loadProgramRandom(struct Ram *ram_ptr);
+byte getMemValue(struct Ram *ram_ptr, int idx);
 
 #endif

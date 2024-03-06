@@ -5,9 +5,7 @@
 #define high 1
 #define low 0
 
-struct InstructionPointer ip;
-
-void setStartNextInstruction()
+void setStartNextInstruction(struct InstructionPointer *ip_ptr)
 {
-    ip.next_instr = 1;
+    ip_ptr->next_instr = 1;
 }

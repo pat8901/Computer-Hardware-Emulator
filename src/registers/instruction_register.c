@@ -5,9 +5,7 @@
 #define high 1
 #define low 0
 
-struct InstructionRegister ir;
-
-void setStartInstruction()
+void setStartInstruction(struct InstructionRegister *ir_ptr)
 {
-    ir.current_instr = 0;
+    ir_ptr->current_instr = 0;
 }
