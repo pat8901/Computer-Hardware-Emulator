@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <../../header/ram/ram.h>
+#include "../../header/ram/ram.h"
 
 #define high 1
 #define low 0
